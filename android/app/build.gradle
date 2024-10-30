@@ -8,8 +8,8 @@ android {
     namespace = "com.example.food_delievery"
     compileSdk = 34 // Set compile SDK version
 
-    ndkVersion = "23.1.7779620" // Specify the NDK version, ensure it is installed in SDK Manager
-//        ndkVersion = "26.1.10909125"
+//    ndkVersion = "23.1.7779620" // Specify the NDK version, ensure it is installed in SDK Manager
+    ndkVersion = "26.1.10909125"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11

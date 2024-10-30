@@ -22,11 +22,22 @@ class MainScreen extends StatelessWidget {
                 canvasColor: kPrimary,
               ),
               child: BottomNavigationBar(
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                unselectedIconTheme: const IconThemeData(color: Colors.black38),
+                selectedIconTheme: const IconThemeData(color: kSecondary),
+                onTap: (int value){
+                  print(value);
+                },
                 items: [
-                  BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
-                  BottomNavigationBarItem(icon: Icon(Icons.search),label: 'Search'),
-                  BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label: 'Cart'),
-                  BottomNavigationBarItem(icon: Icon(Icons.person),label: 'Profile'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.home), label: 'Home'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.search), label: 'Search'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.shopping_cart), label: 'Cart'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.person), label: 'Profile'),
                 ],
               ),
             ),
