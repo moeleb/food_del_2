@@ -5,7 +5,7 @@ import 'package:food_delievery/views/entrypoint.dart';
 import 'package:get/get.dart';
 
 Widget defaultHome = const MainScreen() ;
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

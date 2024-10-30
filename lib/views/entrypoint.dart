@@ -17,7 +17,7 @@ class MainScreen extends StatelessWidget {
             Container(
               height: height,
               width: width,
-              color: kPrimary,
+              color: kOffWhite,
             ),
             Align(
               alignment: Alignment.bottomCenter,
