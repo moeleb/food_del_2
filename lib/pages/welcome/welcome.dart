@@ -37,23 +37,26 @@ class _WelcomeState extends State<Welcome> {
                     },
                     children: [
                       _page(1, context, "Next", "First See learning",
-                          "Whatever was there 1", "imagePath"),
+                          "Whatever was there 1", "assets/images/reading.png"),
                       _page(2, context, "Next", "First See learning 2",
-                          "Whatever was there 2", "imagePath"),
+                          "Whatever was there 2", "assets/images/boy.png"),
                       _page(3, context, "Get Started", "First See learning 3 ",
-                          "Whatever was there 3", "imagePath"),
+                          "Whatever was there 3", "assets/images/man.png"),
                     ],
                   ),
                   Positioned(
                     bottom: 100.h,
                     child: DotsIndicator(
-                      position: BlocProvider.of<WelcomeBloc>(context).state.page.toDouble(),
+                      position: BlocProvider.of<WelcomeBloc>(context)
+                          .state
+                          .page
+                          .toDouble(),
                       dotsCount: 3,
                       decorator: DotsDecorator(
                         color: Colors.grey,
                         activeColor: Colors.blue,
                         size: const Size.square(8.0),
-                        activeSize: const Size(10.0, 8.0),
+                        activeSize: const Size(18.0, 8.0),
                         activeShape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
                         ),
@@ -76,7 +79,10 @@ class _WelcomeState extends State<Welcome> {
         SizedBox(
           width: 345.w,
           height: 345.w,
-          child: Text("Image1"),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
         ),
         Container(
           child: Text(
