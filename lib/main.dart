@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delievery/app_blocs.dart';
 import 'package:food_delievery/app_events.dart';
 import 'package:food_delievery/app_states.dart';
+import 'package:food_delievery/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:food_delievery/pages/welcome/welcome.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppBlocs(),
+      create: (context) => WelcomeBloc(),
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           title: 'Flutter Demo',

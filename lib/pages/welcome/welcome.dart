@@ -1,6 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delievery/pages/welcome/bloc/welcome_blocs.dart';
+import 'package:food_delievery/pages/welcome/bloc/welcome_events.dart';
+import 'package:food_delievery/pages/welcome/bloc/welcome_states.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -15,39 +19,51 @@ class _WelcomeState extends State<Welcome> {
     return Container(
       color: Colors.white,
       child: Scaffold(
-        body: Container(
-          margin: EdgeInsets.only(top: 34.h),
-          width: 375.w,
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              PageView(
+        body: BlocBuilder<WelcomeBloc, WelcomeStates>(
+          builder: (context, state) {
+            return Container(
+              margin: EdgeInsets.only(top: 34.h),
+              width: 375.w,
+              child: Stack(
+                alignment: Alignment.topCenter,
                 children: [
-                  _page(1, context, "Next", "First See learning",
-                      "Whatever was there 1", "imagePath"),
-                  _page(2, context, "Next", "First See learning 2",
-                      "Whatever was there 2", "imagePath"),
-                  _page(3, context, "Get Started", "First See learning 3 ",
-                      "Whatever was there 3", "imagePath"),
+                  PageView(
+                    onPageChanged: (int index) {
+                      state.page = index;
+                      BlocProvider.of<WelcomeBloc>(context).add(
+                        WelcomeEvents(),
+                      );
+                      print(index);
+                    },
+                    children: [
+                      _page(1, context, "Next", "First See learning",
+                          "Whatever was there 1", "imagePath"),
+                      _page(2, context, "Next", "First See learning 2",
+                          "Whatever was there 2", "imagePath"),
+                      _page(3, context, "Get Started", "First See learning 3 ",
+                          "Whatever was there 3", "imagePath"),
+                    ],
+                  ),
+                  Positioned(
+                    bottom: 100.h,
+                    child: DotsIndicator(
+                      position: BlocProvider.of<WelcomeBloc>(context).state.page.toDouble(),
+                      dotsCount: 3,
+                      decorator: DotsDecorator(
+                        color: Colors.grey,
+                        activeColor: Colors.blue,
+                        size: const Size.square(8.0),
+                        activeSize: const Size(10.0, 8.0),
+                        activeShape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              Positioned(
-                bottom: 100.h,
-                child: DotsIndicator(
-                  dotsCount: 3,
-                  decorator: DotsDecorator(
-                    color: Colors.grey,
-                    activeColor: Colors.blue,
-                    size: const Size.square(8.0),
-                    activeSize: const Size(10.0,8.0),
-                    activeShape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    )
-                  ),
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
