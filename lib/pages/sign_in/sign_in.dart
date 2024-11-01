@@ -21,8 +21,22 @@ class _SignInState extends State<SignIn> {
           appBar: buildAppBar(),
           body: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildThirdPartyLogin(context),
+                Center(child: reusableText("Or use your email account login")),
+                Container(
+                  margin: EdgeInsets.only(top: 66.h),
+                  padding:  EdgeInsets.only(left: 25.w, right: 25.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      reusableText("Email"),
+                      buildTextField("Email", "email" ),
+
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -32,27 +46,3 @@ class _SignInState extends State<SignIn> {
   }
 }
 
-// We need context for bloc Accessing
-Widget buildThirdPartyLogin(BuildContext context) {
-  return Container(
-    margin: EdgeInsets.only(top: 40.h,bottom: 20.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-    children: [
-      reusableIcons("google"),
-      reusableIcons("apple"),
-      reusableIcons("facebook"),
-    ],
-  ));
-}
-
-Widget reusableIcons(String iconName) {
-  return GestureDetector(
-    onTap: () {},
-    child: SizedBox(
-      width: 40.w,
-      height: 40.w,
-      child: Image.asset("assets/icons/$iconName.png"),
-    ),
-  );
-}
