@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delievery/app_blocs.dart';
 import 'package:food_delievery/app_events.dart';
 import 'package:food_delievery/app_states.dart';
+import 'package:food_delievery/pages/sign_in/sign_in.dart';
 import 'package:food_delievery/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:food_delievery/pages/welcome/welcome.dart';
 
@@ -26,13 +27,18 @@ class MyApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            appBarTheme: const AppBarTheme(
+              elevation: 0,
+              backgroundColor: Colors.white,
+            ),
           ),
-          home: Welcome(),
+          home: const Welcome(),
           routes: {
-            "myHomePage" : (context) =>const MyHomePage()
+            "myHomePage": (context) => const MyHomePage(),
+            "signIn": (context) => const SignIn()
           },
         ),
       ),
@@ -75,14 +81,14 @@ class MyHomePage extends StatelessWidget {
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Increment()),
             tooltip: 'Increment',
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
           FloatingActionButton(
             heroTag: "subtraction",
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Decrement()),
             tooltip: 'decrement',
-            child: Icon(Icons.remove),
+            child: const Icon(Icons.remove),
           ),
         ],
       ),
