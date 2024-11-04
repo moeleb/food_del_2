@@ -2,6 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin" // Ensure Flutter plugin is loaded after Android and Kotlin plugins
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -47,5 +48,4 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0" // Make sure Kotlin version matches project requirements
-    // Add any other dependencies here
-}
+    implementation platform('com.google.firebase:firebase-bom:33.5.1')}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88534307708",
+    "project_id": "ulearning-8642e",
+    "storage_bucket": "ulearning-8642e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88534307708:android:7b86307bf7f9d7892c0af9",
+        "android_client_info": {
+          "package_name": "com.example.food_delievery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDukm4WQiBqgT8Ae37Do9SwhNCR1JiyjTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
