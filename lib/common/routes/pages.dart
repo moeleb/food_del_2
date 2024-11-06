@@ -33,10 +33,10 @@ class AppPages {
           create: (_) => RegisterBlocs(),
         ),
       ),
-      PageEntity(
+/*      PageEntity(
         route: AppRoutes.APPLICATION,
         page: const ApplicationPage(),
-      ),
+      ),*/
     ];
   }
 
@@ -51,7 +51,16 @@ class AppPages {
   static MaterialPageRoute GenerateRouteSettings(RouteSettings settings) {
     if (settings.name != null) {
       var result = routes().where((element) => element.route == settings.name);
+      if (result.isNotEmpty) {
+        print("valid Route Name: ${settings.name}");
+        return MaterialPageRoute(
+            builder: (_) => result.first.page, settings: settings);
+      }
     }
+    print("Invalid Route Name: ${settings.name}");
+
+    return MaterialPageRoute(
+        builder: (_) => const SignIn(), settings: settings);
   }
 }
 

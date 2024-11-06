@@ -7,21 +7,13 @@ import 'package:food_delievery/app_events.dart';
 import 'package:food_delievery/app_states.dart';
 import 'package:food_delievery/common/routes/pages.dart';
 import 'package:food_delievery/common/values/color.dart';
-import 'package:food_delievery/pages/application/application_page.dart';
-import 'package:food_delievery/pages/bloc_providers.dart';
-import 'package:food_delievery/pages/register/register.dart';
-import 'package:food_delievery/pages/sign_in/bloc/signin_blocs.dart';
-import 'package:food_delievery/pages/sign_in/sign_in.dart';
-import 'package:food_delievery/pages/welcome/bloc/welcome_blocs.dart';
-import 'package:food_delievery/pages/welcome/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
     await Firebase.initializeApp();
-    print("initlized");
   } catch (e) {
-    print("app is not initalized $e");
+    print(e);
   }
   runApp(MyApp());
 }
@@ -36,21 +28,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
-            appBarTheme:  const AppBarTheme(
-              iconTheme: IconThemeData(
-                color: AppColors.primaryText
-              ),
+            appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(color: AppColors.primaryText),
               elevation: 0,
               backgroundColor: Colors.white,
             ),
           ),
-          home: const ApplicationPage(),
-          routes: {
-            "myHomePage": (context) => const MyHomePage(),
-            "signIn": (context) => const SignIn(),
-            "register": (context) => const Register(),
-            "application": (context) => const ApplicationPage(),
-          },
+          onGenerateRoute: AppPages.GenerateRouteSettings,
         ),
       ),
     );
