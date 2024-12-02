@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delievery/common/values/constant.dart';
 import 'package:food_delievery/common/widgets/flutter_toast.dart';
+import 'package:food_delievery/global.dart';
 import 'package:food_delievery/pages/sign_in/bloc/signin_blocs.dart';
 import 'package:food_delievery/pages/welcome/welcome.dart';
 
@@ -44,6 +46,8 @@ class SignInController {
           if (user != null) {
             /// we have user
             print("we have a user");
+            Global.storageService
+                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
             Navigator.of(context)
                 .pushNamedAndRemoveUntil('/application', (route) => false);
           } else {
