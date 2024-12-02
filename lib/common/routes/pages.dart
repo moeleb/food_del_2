@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delievery/common/routes/name.dart';
 import 'package:food_delievery/pages/application/application_page.dart';
+import 'package:food_delievery/pages/application/bloc/app_blocs.dart';
 import 'package:food_delievery/pages/register/bloc/register_blocs.dart';
 import 'package:food_delievery/pages/register/register.dart';
 import 'package:food_delievery/pages/sign_in/bloc/signin_blocs.dart';
@@ -33,10 +34,10 @@ class AppPages {
           create: (_) => RegisterBlocs(),
         ),
       ),
-/*      PageEntity(
-        route: AppRoutes.APPLICATION,
-        page: const ApplicationPage(),
-      ),*/
+      PageEntity(
+          route: AppRoutes.APPLICATION,
+          page: const ApplicationPage(),
+          bloc: BlocProvider(create: (_) => AppBlocs())),
     ];
   }
 

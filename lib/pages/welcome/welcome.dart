@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delievery/common/values/color.dart';
-import 'package:food_delievery/main.dart';
+import 'package:food_delievery/global.dart';
 import 'package:food_delievery/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:food_delievery/pages/welcome/bloc/welcome_events.dart';
 import 'package:food_delievery/pages/welcome/bloc/welcome_states.dart';
+
+import '../../common/values/constant.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -119,7 +121,7 @@ class _WelcomeState extends State<Welcome> {
               );
             } else {
               // jump to a new page
-
+              Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
               Navigator.of(context).pushNamedAndRemoveUntil("/sign_in", (route)=>false);
             }
           },
@@ -130,7 +132,7 @@ class _WelcomeState extends State<Welcome> {
             decoration: BoxDecoration(
               color: AppColors.primaryElement,
               borderRadius: BorderRadius.all(Radius.circular(15.w)),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: AppColors.primaryElement,
                     blurRadius: 2,

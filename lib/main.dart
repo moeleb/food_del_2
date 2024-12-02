@@ -2,19 +2,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delievery/app_blocs.dart';
-import 'package:food_delievery/app_events.dart';
-import 'package:food_delievery/app_states.dart';
+
 import 'package:food_delievery/common/routes/pages.dart';
 import 'package:food_delievery/common/values/color.dart';
+import 'package:food_delievery/pages/application/bloc/app_blocs.dart';
+import 'package:food_delievery/pages/application/bloc/app_states.dart';
+
+import 'global.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await Firebase.initializeApp();
-  } catch (e) {
-    print(e);
-  }
+  await Global.init();
   runApp(MyApp());
 }
 
@@ -51,7 +48,7 @@ class MyHomePage extends StatelessWidget {
         title: const Text("Flutter Demo Home Page"),
       ),
       body: Center(
-        child: BlocBuilder<AppBlocs, AppStates>(
+        child: BlocBuilder<AppBlocs, AppState>(
           builder: (context, state) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                   'You have pushed the button this many times:',
                 ),
                 Text(
-                  "${BlocProvider.of<AppBlocs>(context).state.counter}",
+                  "${BlocProvider.of<AppBlocs>(context).state.index}",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],
@@ -68,25 +65,25 @@ class MyHomePage extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          FloatingActionButton(
-            heroTag: "addition",
-            onPressed: () =>
-                BlocProvider.of<AppBlocs>(context).add(Increment()),
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-          FloatingActionButton(
-            heroTag: "subtraction",
-            onPressed: () =>
-                BlocProvider.of<AppBlocs>(context).add(Decrement()),
-            tooltip: 'decrement',
-            child: const Icon(Icons.remove),
-          ),
-        ],
-      ),
+      // floatingActionButton: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //   children: [
+      //     FloatingActionButton(
+      //       heroTag: "addition",
+      //       onPressed: () =>
+      //           BlocProvider.of<AppBlocs>(context).add(Increment()),
+      //       tooltip: 'Increment',
+      //       child: const Icon(Icons.add),
+      //     ),
+      //     FloatingActionButton(
+      //       heroTag: "subtraction",
+      //       onPressed: () =>
+      //           BlocProvider.of<AppBlocs>(context).add(Decrement()),
+      //       tooltip: 'decrement',
+      //       child: const Icon(Icons.remove),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

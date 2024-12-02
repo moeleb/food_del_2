@@ -44,7 +44,8 @@ class SignInController {
           if (user != null) {
             /// we have user
             print("we have a user");
-            Navigator.pushNamed(context, "application");
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/application', (route) => false);
           } else {
             toastInfo(msg: "Currently you are not a user for this app");
             return;
