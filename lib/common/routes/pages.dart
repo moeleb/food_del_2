@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delievery/common/routes/name.dart';
 import 'package:food_delievery/pages/application/application_page.dart';
 import 'package:food_delievery/pages/application/bloc/app_blocs.dart';
+import 'package:food_delievery/pages/home/bloc/home_page_blocs.dart';
+import 'package:food_delievery/pages/home/home_page.dart';
+import 'package:food_delievery/pages/profile/settings/bloc/settings_blocs.dart';
+import 'package:food_delievery/pages/profile/settings/settings_page.dart';
 import 'package:food_delievery/pages/register/bloc/register_blocs.dart';
 import 'package:food_delievery/pages/register/register.dart';
 import 'package:food_delievery/pages/sign_in/bloc/signin_blocs.dart';
@@ -40,6 +44,14 @@ class AppPages {
           route: AppRoutes.APPLICATION,
           page: const ApplicationPage(),
           bloc: BlocProvider(create: (_) => AppBlocs())),
+      PageEntity(
+          route: AppRoutes.HOME_PAGE,
+          page: const HomePage(),
+          bloc: BlocProvider(create: (_) => HomePageBlocs())),
+      PageEntity(
+          route: AppRoutes.SETTINGS,
+          page: const SettingsPage(),
+          bloc: BlocProvider(create: (_) => SettingsBlocs())),
     ];
   }
 

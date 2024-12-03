@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delievery/pages/profile/profile.dart';
 
 import '../../common/values/color.dart';
+import '../home/home_page.dart';
 
 Widget buildPage(int index) {
   List<Widget> _widget = [
-    const Center(child: Text("Home")),
+    const HomePage(),
     const Center(child: Text("Search")),
     const Center(child: Text("Course")),
     const Center(child: Text("Chat")),
-    const Center(child: Text("Profile")),
+    const ProfileScreen(),
+
   ];
   return _widget[index];
 }
